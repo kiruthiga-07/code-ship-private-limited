@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Employee Form</title>
+		
+		<style>
+			body
+			{
+				font-family:georgian;
+				background-color: #f4f4f4;
+				padding: 20px;
+			}
+			
+			.container
+			{
+				width: 80%;
+				margin: auto;
+			}
+			
+			.form-box
+			{
+				background-color: white;
+				padding: 20px;
+				padding-right: 40px;
+				border: 1px solid #ccc;
+				margin-border: 20px;
+			}
+			
+			h2
+			{
+				text-align: center;
+				margin-bottom: 20px;
+			}
+			
+			label
+			{
+				font-weight: bold;
+			}
+			
+			input, select, textarea
+			{
+				width: 100%;
+				padding: 10px;
+				margin-top: 5px;
+				margin-border: 15px;
+				border: 1px solid #999;
+			}
+			
+			button
+			{
+				background-color: #2563eb;
+				color: white;
+				padding: 10px 20px;
+				border: none;
+				cursor: pointer;
+			}
+			
+			button:hover
+			{
+				background-color: #1d4ed8;
+			}
+			
+			table
+			{
+				width: 100%;
+				border: collapse;
+				background-color: white;
+			}
+			
+			table th
+			{
+				background-color: #2563eb;
+				color: white;
+				padding: 10px;
+			}
+
+			table td
+			{
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="container">
+			<div class="form-box">
+				<h2>Employee Registration Form</h2>
+				
+				<form id="registrationForm">
+				
+					<label>Full Name</label>
+					<input type="text" id="name" required>
+					
+					<label>Email</label>
+					<input type="email" id="email" required>
+					
+					<label>Phone Number</label>
+					<input type="tel" id="phone" required>
+					
+					<label>Department</label>
+					<select id="department" required>
+						<option value="">Select</option>
+						<option>HR</option>
+						<option>Developer</option>
+						<option>Testing</option>
+						<option>Marketing</option>
+					</select>
+					
+					<label>Address</label>
+					<textarea id="address" rows="4"></textarea>
+					
+					<button type="submit">Submit</button>
+					
+				</form>
+				
+			</div>
+			
+			<h2>Submitted Details</h2>
+			<table id="dataTable">
+			
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Department</th>
+						<th>Address</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+				
+				</tbody>
+				
+			</table>
+		</div>
+		
+		<script>
+			const form = document.getElementById("registrationForm");
+			
+			const tableBody = document.querySelector("#dataTable tbody");
+			
+			form.addEventListener("submit", function(event)
+			{
+				event.preventDefault();
+				
+				const name = document.getElementById("name").value;
+				
+				const email = document.getElementById("email").value;
+				
+				const phone = document.getElementById("phone").value;
+				
+				const department = document.getElementById("department").value;
+				
+				const address = document.getElementById("address").value;
+				
+				const newRow = document.createElement("tr");
+				
+				newRow.innerHTML = 
+				`
+					<td>${name}</td>
+					<td>${email}</td>
+					<td>${phone}</td>
+					<td>${department}</td>
+					<td>${address}</td>
+				`;
+				
+				tableBody.appendChild(newRow);
+				
+				form.reset();
+			});
+			
+		</script>
+	</body>
+</html>

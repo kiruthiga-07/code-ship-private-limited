@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Xcros Clone</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+            }
+
+            body{
+                background:#edf2f2;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            .main-section{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                gap:80px;
+                padding:50px;
+            }
+
+            .navbar-custom{
+                background:#007c7c;
+                height:60px;
+                padding-left:180px;
+            }
+
+            .navbar-custom img{
+                width:35px;
+                height:35px;
+                object-fit:contain;
+            }
+
+            .left-content{
+                width:500px;
+            }
+
+            .left-content h1{
+                font-size:32px;
+                line-height:1.5;
+                color:#222;
+                font-weight:400;
+            }
+
+            .left-content h1 span{
+                font-weight:bold;
+            }
+
+            .left-content a{
+                text-decoration:none;
+                color:#0a4da2;
+                font-size:18px;
+                font-weight:bold;
+            }
+
+            .launch-text{
+                margin-top:30px;
+                font-size:16px;
+                color:#333;
+            }
+
+            .timer{
+                display:flex;
+                gap:12px;
+                margin-top:25px;
+            }
+
+            .time-box{
+                width:60px;
+                height:55px;
+                background:#ffffff;
+                border-radius:8px;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+            }
+
+            .time-box h2{
+                margin:0;
+                font-size:22px;
+                font-weight:bold;
+            }
+
+            .timer-labels{
+                display:flex;
+                gap:24px;
+                margin-top:10px;
+                margin-left:5px;
+                gap: 50px;
+                align-items: center;
+            }
+
+            .timer-labels span{
+                font-size:14px;
+                color:#444;
+            }
+
+
+            .community-text{
+                margin-top:35px;
+                font-size:14px;
+                font-weight:bold;
+                color:#222;
+            }
+
+
+            .beta-btn{
+                width:100%;
+                margin-top:30px;
+                padding:7px;
+                border:none;
+                border-radius:12px;
+                background:#ff9800;
+                color:white;
+                font-size:20px;
+                font-weight:bold;
+                cursor:pointer;
+                box-shadow:0 4px 10px rgba(0,0,0,0.20);
+            }
+
+            .subscribe-box{
+                display:flex;
+                gap:10px;
+                margin-top:18px;
+            }
+
+            .subscribe-box input{
+                flex:1;
+                padding:10px;
+                border-radius:8px;
+                border:1px solid #ccc;
+            }
+
+            .subscribe-box button{
+                width:120px;
+                border:none;
+                background:#ff9800;
+                color:white;
+                border-radius:8px;
+                font-size:18px;
+                cursor:pointer;
+            }
+
+            .carousel-container{
+                width:500px;
+                border-radius:18px;
+                overflow:hidden;
+                background:#008687;
+            }
+
+            .carousel-item img{
+                height:500px;
+                object-fit:scale-down;
+            }
+
+            .footer{
+            background:#008b8b;
+            color:white;
+            padding:60px 80px;
+            }
+
+            .footer-container{
+            display:flex;
+            justify-content:space-between;
+            gap:50px;
+            flex-wrap:wrap;
+            }
+
+            .footer-left{
+            width:320px;
+            }
+
+            .footer-left img{
+            width:80%;
+            margin-bottom:25px;
+            }
+
+            .footer-left p{
+            line-height:1.7;
+            font-size:14px;
+            }
+
+            .footer-box{
+            width:300px;
+            }
+
+            .footer-box h2{
+            margin-bottom:30px;
+            font-size:26px;
+            font-weight:bold;
+            }
+
+            .profile{
+            display:flex;
+            align-items:center;
+            gap:15px;
+            margin-bottom:30px;
+            }
+
+            .profile img{
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            }
+
+            .profile h4{
+            margin:0;
+            font-size:18px;
+            }
+
+            .info{
+            background:rgba(255,255,255,0.1);
+            padding:14px 15px;
+            border-radius:40px;
+            margin-bottom:18px;
+            display:flex;
+            align-items:center;
+            gap:15px;
+            font-size:14px;
+            }
+
+            .info i{
+            color:orange;
+            font-size:18px;
+            }
+
+            .newsletter{
+            margin-top:25px;
+            font-size:16px;
+            }
+
+            .newsletter span{
+            color:orange;
+            font-weight:bold;
+            }
+
+            .bottom-bar{
+            background:orange;
+            color:white;
+            padding:18px 80px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            font-size:14px;
+            flex-wrap:wrap;
+            }
+
+            @media (max-width: 992px) {
+                .main-section {
+                    flex-direction: column;
+                    padding: 30px 20px;
+                    gap: 40px;
+                    text-align: center;
+                }
+
+                .left-content, .carousel-container {
+                    width: 100%;
+                    max-width: 500px;
+                }
+
+                .navbar-custom {
+                    padding-left: 20px;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .timer {
+                    justify-content: center;
+                }
+
+                .timer-labels {
+                    justify-content: center;
+                    margin-left: 0;
+                    gap: 35px;
+                }
+
+                .footer-container {
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                .info {
+                    justify-content: center;
+                }
+                
+                .profile {
+                    flex-direction: column;
+                }
+
+                .bottom-bar {
+                    padding: 20px;
+                    flex-direction: column;
+                    gap: 10px;
+                    text-align: center;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .left-content h1 {
+                    font-size: 24px;
+                }
+                
+                .carousel-item img {
+                    height: 300px;
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-custom">
+            <img src="https://xcros.in/image/Preloader%20Logo.png">
+        </nav>
+
+        <section class="main-section">
+            <div class="left-content">
+                <h1>
+                    <span>XCROS </span>by GUDVIL NEXUS<br>
+                    is an <span> All-in-one</span><br>
+                    community platform.
+                    <a href="#">View More > </a>
+                </h1>
+
+                <p class="launch-text">
+                    Brace yourself, for the most to come our official launch is on
+                </p>
+
+                <div class="timer">
+                    <div class="time-box">
+                        <h2 id="days">18</h2>
+                    </div>
+
+                    <div class="time-box">
+                        <h2 id="hours">14</h2>
+                    </div>
+
+                    <div class="time-box">
+                        <h2 id="mins">24</h2>
+                    </div>
+
+                    <div class="time-box">
+                        <h2 id="secs">51</h2>
+                    </div>
+                </div>
+
+                <div class="timer-labels">
+                    <span>days</span>
+                    <span>hours</span>
+                    <span>mins</span>
+                    <span>secs</span>
+                </div>
+
+                <div class="community-text">
+                    JOIN US AND MAKE A MARK IN YOUR LOCAL COMMUNITY!
+                </div>
+
+                <button class="beta-btn">
+                    Enter Beta Version
+                </button>
+                <form onsubmit="add()">
+                <div class="subscribe-box">
+                    <input type="email" placeholder="Enter your email" id="email" required>
+
+                    <button type="submit">
+                        Subscribe
+                    </button>
+                    
+                </div>
+                </form>
+                <p id="sub" style="color:#007c7c; text-align: center; padding-top: 20px;"></p>
+                <script> 
+                    function add(){
+                        let email = document.getElementById("email").value;
+                        document.getElementById("sub").innerHTML = "Submitted Successfully!!!";
+                    }
+                </script>
+            </div>
+
+            <div class="carousel-container">
+
+                <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+                    <div class="carousel-indicators">
+
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"> </button>
+
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"> </button>
+
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"> </button>
+
+                    </div>
+
+
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <img src="https://xcros.in/image/betaOne.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="https://xcros.in/image/business.png" class="d-block w-100">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="https://xcros.in/image/agent.png" class="d-block w-100">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="footer">
+
+            <div class="footer-container">
+
+            <div class="footer-left">
+
+                <img src="https://xcros.in/image/new_logo.jpg">
+
+                <p>
+                Our futures are intertwined, so let's rededicate ourselves to
+                serving the common good, and if we act in that knowledge and in
+                that spirit together, we have contributed to our evolutionary process.
+                <br>
+                Be a part of your online community
+                <br>
+                Find us on:
+                </p>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h2>Project Agent</h2>
+
+                <div class="profile">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                <h4>Project Agent</h4>
+                </div>
+
+                <div class="info">
+                <i class="bi bi-envelope-fill"></i>
+                project.agent@xcros.example
+                </div>
+
+                <div class="info">
+                <i class="bi bi-telephone-fill"></i>
+                +1 202 555 0188
+                </div>
+
+                <div class="info">
+                <i class="bi bi-geo-alt-fill"></i>
+                Network Plaza, XCROS Hub
+                </div>
+
+                <div class="newsletter">
+                Subscribe to Global <a href="#"><span>Newsletter →</span></a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h2>Network Agent</h2>
+
+                <div class="profile">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg">
+                    <h4>Network Agent</h4>
+                </div>
+
+                <div class="info">
+                    <i class="bi bi-envelope-fill"></i>
+                    network.agent@xcros.example
+                </div>
+
+                <div class="info">
+                    <i class="bi bi-telephone-fill"></i>
+                    +1 202 555 0172
+                </div>
+
+                <div class="info">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    Location Guide Support Desk
+                </div>
+
+                <div class="newsletter">
+                    Subscribe to Local <a href="#"><span>Newsletter →</span></a>
+                </div>
+
+            </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="bottom-bar">
+
+            <div>
+            2024-26 © Gudvil Nexus © | Contact Us
+            </div>
+
+            <div>
+            Privacy & Terms  | 
+            <i class="bi bi-globe"></i>
+            </div>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            const launchDate = new Date().getTime() + (18 * 24 * 60 * 60 * 1000);
+
+            const timer = setInterval(function(){
+                const now = new Date().getTime();
+                const distance = launchDate - now;
+
+                document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("mins").innerHTML = Math.floor((distance % (1000 * 60 * 60 )) / (1000 * 60));
+                document.getElementById("secs").innerHTML = Math.floor((distance % (1000 * 60 )) / 1000);
+
+                if(distance < 0){
+                    document.getElementById("days").innerHTML = "0";
+                    document.getElementById("hours").innerHTML = "0";
+                    document.getElementById("mins").innerHTML = "0";
+                    document.getElementById("secs").innerHTML = "0";
+                }
+            },1000);
+        </script>
+    </body>
+
+</html>

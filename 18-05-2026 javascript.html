@@ -1,0 +1,95 @@
+<html>
+    <script>
+        let str="hello world ";
+        console.log(str);
+
+        //length
+        console.log(str.length);
+
+        //concatenation
+        let str2="java script";
+        console.log(str.concat(str2));  
+
+        //upper case and lower case
+        console.log(str.toUpperCase());   
+        console.log(str.toLocaleLowerCase());
+
+        let s = str + str2;
+        console.log(s);
+
+        //slice
+        console.log(s.slice(6,11));
+
+        //replace
+        console.log(s.replace('java script','Kiruthiga'));
+
+        //replace all
+        let r = "hello hello kiruthiga";
+        console.log(r.replaceAll('hello','bye'));
+
+        //trim 
+        let t = "     hello world        ";
+        console.log(t.trim());
+
+        console.log(t.trimStart());
+
+        console.log(t.trimEnd());
+
+        //substring
+        let ss="let, var, const"
+        console.log(ss.substring(5,8));
+
+        //substr
+        console.log(ss.substr(5,8));
+
+        //padstart
+        let p="hello"
+        console.log(p.padStart(15,'e'));
+
+        console.log(p.padEnd(15,'o'));
+
+        //charAt
+        console.log(str.charAt(7));
+
+        //index of
+        console.log(s.indexOf('j'));
+
+
+
+
+        //SubString
+        let st = "Kir";
+        let res = []; //[k, ki, kir, i, ir, r]
+        let count=0; //1 2 3 4 5 6
+        for(let i=0;i<st.length;i++){ //0 | 1 | 2 
+            for(let j=i+1; j<=st.length; j++){ //1 2 3 | 2 3 | 3 
+                res.push(st.substring(i,j)); //(0,1) (0,2) (0,3) | (1,2) (1,3) | (2,3)
+                count++;
+            }
+        }
+
+        for(let i=0; i<res.length; i++)
+        {
+            console.log(res[i]);
+        }
+
+        for(let i in res)
+        {
+            console.log(res[i]);
+        }
+
+        res.forEach((a) => {
+             console.log(a)
+            });
+
+        for(let i of res){
+            console.log(i);
+        }
+
+        res.forEach(function(i){
+            console.log(i);
+        });
+        
+        console.log(count);
+    </script>
+</html>

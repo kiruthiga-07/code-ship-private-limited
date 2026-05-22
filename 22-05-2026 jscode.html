@@ -1,0 +1,173 @@
+<!--1.change text-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Example</title>
+    </head>
+    <style>
+        body{
+            background-color: antiquewhite;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button{
+            border: none;
+            padding: 10px;
+            background-color: rgb(174, 81, 174);
+            color:white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        input{
+            width: 200px;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .box{
+            border: 1px solid black;
+            padding: 20px;
+            height: 250px;
+            width: 250px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(252, 223, 252);
+            margin-bottom: 5px;
+            border-radius: 8px;
+        }
+    </style>
+    <body>
+        <div class="box">
+            <h2 style="color: purple">Change Text</h2>
+            <h1 id="title">Hello World</h1>
+            <button onclick="changeText()">Click Me to Change Text</button><br><br><br>
+        </div>
+
+        <div class="box">
+            <h2 style="color: purple">Change BG color</h2>
+            <button onclick="changeColor()">Click Me to Change Color</button><br><br><br>
+        </div>
+
+        <div class="box">
+            <h2 style="color: purple">Form</h2>
+            <input type="text" id="name" placeholder="Enter Your Name"><br>
+            <button onclick="showName()">Submit</button>
+            <h2 id="result"></h2><br><br><br>
+        </div>
+
+        <div class="box">
+            <h2 style="color: purple">Hide and Show</h2>
+            <p id="para">This is a paragraph</p>
+            <button onclick="hideText()">Hide</button><br>
+            <button onclick="showText()">Show</button><br><br><br>
+        </div>
+
+        <div class="box">
+            <h2 style="color: purple">Change Image</h2>
+            <img id="myImage" src="C:\Users\kirut\OneDrive\Pictures\Web_Photo_Editor.jpg" width="200"><br><br>
+            <button onclick="changeImage()">Click Me to Change The Image</button><br><br><br>
+        </div>
+
+        <div class="box">
+            <h2 style="color: purple">Add to List</h2>
+            <input type="text" id="item"><br>
+            <button onclick="addItem()">Add</button>
+            <ul id="list"></ul><br><br><br>
+        </div>
+
+        <div class="box">
+            <h2 style="color: purple">Count</h2>
+            <h1 id="count">0</h1>
+            <button onclick="increase()">Increase</button><br>
+            <button onclick="decrease()">Decrease</button><br><br><br>
+        </div>
+
+        <div class="box">
+            <h2 style="color: purple">Email form</h2>
+            <input type="text" id="username"><br>
+            <button onclick="validate()">Submit</button>
+            <p id="msg"></p><br><br><br>
+        </div>
+
+    <script>
+        function changeText()
+        {
+            document.getElementById("title").innerHTML = "Welcome to javaScript DOM"
+        }
+
+        function changeColor()
+        {
+            document.body.style.backgroundColor = "lavender";
+        }
+
+        function showName()
+        {
+            let username = document.getElementById("name").value;
+
+            document.getElementById("result").innerHTML = "Hello " + username;
+        }
+
+        function hideText()
+        {
+            document.getElementById("para").style.display = "none";
+        }
+
+        function showText()
+        {
+            document.getElementById("para").style.display = "block";
+        }
+
+        function changeImage()
+        {
+            document.getElementById("myImage").src ="gojo_geto.jpg";
+        }
+
+        function addItem(){
+            let value = document.getElementById("item").value;
+
+            let li = document.createElement("li");
+
+            li.innerHTML = value;
+
+            document.getElementById("list").appendChild(li);
+        }
+
+        let count = 0;
+        function increase()
+        {
+            count++;
+            
+            document.getElementById("count").innerHTML = count;
+        }
+
+        function decrease()
+        {
+            count--;
+            document.getElementById("count").innerHTML = count;
+        }
+
+        function validate(){
+            let user = document.getElementById("username").value;
+
+            if(user == "")
+            {
+                document.getElementById("msg").innerHTML = "Username cannot be empty!!!";
+
+                document.getElementById("msg").style.color = "red";
+            }
+            else{
+                document.getElementById("msg").innerHTML= "Form Submitted!!!";
+
+                document.getElementById("msg").style.color = "green";
+            }
+        }
+    </script>
+    </body>
+</html>
+
+

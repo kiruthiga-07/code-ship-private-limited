@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animal Match Game</title>
+        <style>
+            body{
+                text-align: center;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                background-color: rgb(185, 225, 251);
+                display: flex;
+                justify-content: center;
+            }
+
+            .container{
+                background-color: rgb(244, 255, 255);
+                padding: 40px;
+                border-radius: 20px;
+                text-align: center;
+                width: 400px;
+                border: 1.5px solid rgb(47, 147, 214);
+            }
+
+            h2{
+                color:rgb(47, 147, 214);
+                margin-bottom: 25px;
+            }
+
+            select{
+                padding: 12px;
+                width: 220px;
+                border-radius: 10px;
+                border: 1px solid rgb(47, 147, 214);
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            #randomAnimal{
+                font-size: 30px;
+                font-weight: bold;
+                margin: 20px auto;
+                border: 2px solid black;
+                display: inline-block;
+                padding: 20px 50px;
+                width: 100px;
+                color: rgb(47, 147, 214);
+                text-align: center;
+            }
+
+            button{
+                padding: 10px 20px;
+                font-size: 18px;
+                cursor: pointer;
+                color: aliceblue;
+                background-color: rgb(47, 147, 214);
+                border-radius: 7px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <h2>Animal Match Game</h2>
+
+        <select id="userAnimal">
+            <option>-- Select --</option>
+            <option>Lion 🦁</option>
+            <option>Tiger 🐯</option>
+            <option>Elephant 🐘</option>
+            <option>Monkey 🐵</option>
+            <option>Zebra 🦓</option>
+            <option>Giraffe 🦒</option>
+            <option>Bear 🐻</option>
+            <option>Rabbit 🐰</option>
+        </select>
+
+        <br><br>
+
+        <div id="randomAnimal">?</div>
+
+        <br><br>
+
+        <button onclick="generateAnimal()"> Random Animal </button>
+
+        <h3 id="result"></h3>
+        </div>
+
+        <script>
+            const animals = [
+                "Lion 🦁",
+                "Tiger 🐯",
+                "Elephant 🐘",
+                "Monkey 🐵",
+                "Zebra 🦓",
+                "Giraffe 🦒",
+                "Bear 🐻",
+                "Rabbit 🐰"
+            ];
+
+            function generateAnimal(){
+                let userChoice = document.getElementById("userAnimal").value;
+
+                let counter = 0;
+
+                let interval = setInterval(() => {
+                    let randomIndex = Math.floor(Math.random() * animals.length);
+
+                    document.getElementById("randomAnimal").innerHTML = animals[randomIndex];
+
+                    counter++;
+
+                    if (counter === 20){
+                        clearInterval(interval);
+
+                        let finalIndex = Math.floor(Math.random() * animals.length);
+
+                        let finalAnimal = animals[finalIndex];
+
+                        document.getElementById("randomAnimal").innerHTML = finalAnimal;
+
+                        if(userChoice === finalAnimal){
+                            document.getElementById("result").innerHTML = "Matched!!!🎊";
+                            document.getElementById("result").style.color = "green";
+                        }else{
+                            document.getElementById("result").innerHTML = "Not Matched! ❌";
+                            document.getElementById("result").style.color = "red";
+                        }
+                    }
+                },100);
+            }
+        </script>
+    </body>
+</html>
